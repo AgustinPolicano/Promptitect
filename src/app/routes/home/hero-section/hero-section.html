@@ -1,0 +1,370 @@
+<p>hero-section works!</p>
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <!-- Background Grid Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div
+        class="absolute inset-0"
+        [ngStyle]="{
+          'background-image':
+            'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)',
+          'background-size': '40px 40px'
+        }"
+      ></div>
+    </div>
+  
+    <!-- Floating Elements -->
+    <div class="absolute top-20 right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 left-20 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl animate-pulse"></div>
+  
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+      <!-- Navigation -->
+      <nav class="flex items-center justify-between mb-16">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-lg flex items-center justify-center">
+            <!-- PenTool icon (inline SVG) -->
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-5-5"></path>
+              <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
+            </svg>
+          </div>
+          <span class="text-xl font-bold text-white">FloorplanAI</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-slate-300 hover:text-white transition-colors">Features</a>
+          <a href="#pricing" class="text-slate-300 hover:text-white transition-colors">Pricing</a>
+          <a href="#about" class="text-slate-300 hover:text-white transition-colors">About</a>
+          <a href="/design-system" class="text-slate-300 hover:text-white transition-colors">Design System</a>
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">Sign In</button>
+        </div>
+      </nav>
+  
+      <!-- Hero Content -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Column - Content -->
+        <div class="space-y-8">
+          <!-- Badge -->
+          <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2">
+            <!-- Zap icon -->
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
+            </svg>
+            <span class="text-blue-300 text-sm font-medium">AI-Powered Architecture</span>
+          </div>
+  
+          <!-- Headline -->
+          <div class="space-y-4">
+            <h1 class="text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Turn
+              <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">Ideas</span>
+              into<br />
+              Floorplans Instantly
+            </h1>
+            <p class="text-xl text-slate-300 max-w-lg">
+              Generate precise architectural layouts from simple text descriptions. No CAD skills required—just describe
+              your vision and watch it come to life.
+            </p>
+          </div>
+  
+          <!-- Interactive Demo -->
+          <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 space-y-4">
+            <label class="block text-sm font-medium text-slate-300">Try it yourself:</label>
+            <div class="relative">
+              <input
+                type="text"
+                [(ngModel)]="currentPrompt"
+                placeholder="Describe your ideal space..."
+                class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+              <button
+                (click)="handleGenerate()"
+                [disabled]="isGenerating"
+                class="absolute right-2 top-2 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 disabled:opacity-50 text-white px-4 py-2 rounded-md transition-all duration-200 flex items-center space-x-2"
+              >
+                <ng-container *ngIf="isGenerating; else genBtn">
+                  <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span class="text-sm">Generating...</span>
+                </ng-container>
+                <ng-template #genBtn>
+                  <span class="text-sm">Generate</span>
+                  <!-- ArrowRight icon -->
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </ng-template>
+              </button>
+            </div>
+          </div>
+  
+          <!-- Key Benefits -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="flex items-center space-x-3">
+              <!-- CheckCircle icon -->
+              <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4 12 14.01l-3-3"></path>
+              </svg>
+              <span class="text-slate-300">Instant generation</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4 12 14.01l-3-3"></path>
+              </svg>
+              <span class="text-slate-300">Professional quality</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4 12 14.01l-3-3"></path>
+              </svg>
+              <span class="text-slate-300">No CAD required</span>
+            </div>
+          </div>
+  
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Start Creating Free
+            </button>
+            <button
+              class="border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2"
+            >
+              <!-- Users icon -->
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>View Examples</span>
+            </button>
+          </div>
+  
+          <!-- Trust Indicators -->
+          <div class="pt-8 border-t border-slate-800">
+            <p class="text-slate-400 text-sm mb-4">Trusted by professionals at:</p>
+            <div class="flex items-center space-x-8 opacity-60">
+              <div class="text-slate-500 font-semibold">ArchStudio</div>
+              <div class="text-slate-500 font-semibold">BuildCorp</div>
+              <div class="text-slate-500 font-semibold">DesignFlow</div>
+              <div class="text-slate-500 font-semibold">PlanIt</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right Column - Visual Demo -->
+        <div class="relative">
+          <div
+            class="bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden transition-all duration-1000"
+            [ngClass]="floorplanVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+          >
+            <!-- Blueprint Grid Background -->
+            <div
+              class="absolute inset-0 opacity-5"
+              [ngStyle]="{
+                'background-image':
+                  'linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)',
+                'background-size': '20px 20px'
+              }"
+            ></div>
+  
+            <!-- Floorplan Content -->
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-slate-800 font-semibold text-lg">Generated Floorplan</h3>
+                <div
+                  class="flex items-center space-x-2 text-slate-500 text-sm transition-all duration-500"
+                  [ngClass]="floorplanVisible ? 'opacity-100' : 'opacity-0'"
+                >
+                  <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span>Live Preview</span>
+                </div>
+              </div>
+  
+              <!-- Simplified Floorplan Visualization -->
+              <div class="space-y-4">
+                <div class="relative h-64 bg-white">
+                  <svg viewBox="0 0 400 260" class="w-full h-full">
+                    <style>
+                      .draw-line{stroke-dasharray:1000;stroke-dashoffset:1000;animation: {{floorplanVisible ? 'draw 3s ease-in-out forwards' : 'none'}};}
+                      .draw-line-fast{stroke-dasharray:500;stroke-dashoffset:500;animation: {{floorplanVisible ? 'draw 2s ease-in-out forwards' : 'none'}};}
+                      .fade-in{opacity:0;animation: {{floorplanVisible ? 'fadeIn 1s ease-in-out 2s forwards' : 'none'}};}
+                      .fade-in-delayed{opacity:0;animation: {{floorplanVisible ? 'fadeIn 1s ease-in-out 3s forwards' : 'none'}};}
+                      @keyframes draw{to{stroke-dashoffset:0}}
+                      @keyframes fadeIn{to{opacity:1}}
+                    </style>
+  
+                    <!-- Exterior Walls -->
+                    <rect x="20" y="20" width="360" height="200" fill="none" stroke="#2D3748" stroke-width="4" class="draw-line" />
+  
+                    <!-- Interior Walls -->
+                    <line x1="140" y1="20" x2="140" y2="120" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="140" y1="140" x2="140" y2="220" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="260" y1="20" x2="260" y2="100" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="260" y1="120" x2="260" y2="220" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="320" y1="120" x2="320" y2="220" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="20" y1="120" x2="80" y2="120" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="100" y1="120" x2="140" y2="120" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="260" y1="100" x2="380" y2="100" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+                    <line x1="140" y1="160" x2="260" y2="160" stroke="#2D3748" stroke-width="2" class="draw-line-fast" />
+  
+                    <!-- Doors -->
+                    <path d="M 80 20 A 20 20 0 0 1 80 40" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2" class="fade-in" />
+                    <path d="M 140 120 A 20 20 0 0 1 160 120" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2" class="fade-in" />
+                    <path d="M 260 100 A 20 20 0 0 1 260 120" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2" class="fade-in" />
+                    <path d="M 140 140 A 20 20 0 0 1 160 140" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2" class="fade-in" />
+  
+                    <!-- Windows -->
+                    <line x1="180" y1="20" x2="220" y2="20" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="180" y1="18" x2="220" y2="18" stroke="#4A5568" stroke-width="1" class="fade-in" />
+                    <line x1="300" y1="20" x2="340" y2="20" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="300" y1="18" x2="340" y2="18" stroke="#4A5568" stroke-width="1" class="fade-in" />
+                    <line x1="380" y1="60" x2="380" y2="80" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="382" y1="60" x2="382" y2="80" stroke="#4A5568" stroke-width="1" class="fade-in" />
+                    <line x1="380" y1="140" x2="380" y2="180" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="382" y1="140" x2="382" y2="180" stroke="#4A5568" stroke-width="1" class="fade-in" />
+                    <line x1="20" y1="160" x2="20" y2="180" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="18" y1="160" x2="18" y2="180" stroke="#4A5568" stroke-width="1" class="fade-in" />
+                    <line x1="140" y1="220" x2="180" y2="220" stroke="#4A5568" stroke-width="3" class="fade-in" />
+                    <line x1="140" y1="222" x2="180" y2="222" stroke="#4A5568" stroke-width="1" class="fade-in" />
+  
+                    <!-- Labels -->
+                    <text x="80" y="70" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">LIVING ROOM</text>
+                    <text x="80" y="80" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">16' × 12'</text>
+  
+                    <text x="200" y="60" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">KITCHEN</text>
+                    <text x="200" y="70" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">12' × 10'</text>
+  
+                    <text x="340" y="60" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">DINING</text>
+                    <text x="340" y="70" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">10' × 8'</text>
+  
+                    <text x="80" y="170" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">BEDROOM 1</text>
+                    <text x="80" y="180" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">12' × 10'</text>
+  
+                    <text x="200" y="190" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">BEDROOM 2</text>
+                    <text x="200" y="200" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">11' × 9'</text>
+  
+                    <text x="290" y="170" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">BATH</text>
+                    <text x="290" y="180" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">8' × 6'</text>
+  
+                    <text x="350" y="170" text-anchor="middle" class="fill-slate-600 text-xs font-medium fade-in-delayed">GARAGE</text>
+                    <text x="350" y="180" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">20' × 10'</text>
+  
+                    <!-- Furniture / fixtures -->
+                    <rect x="180" y="45" width="40" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="3,3" class="fade-in-delayed" />
+                    <rect x="50" y="80" width="60" height="25" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" rx="2" class="fade-in-delayed" />
+                    <text x="80" y="95" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">SOFA</text>
+                    <rect x="60" y="50" width="20" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" class="fade-in-delayed" />
+  
+                    <circle cx="340" cy="50" r="15" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" class="fade-in-delayed" />
+                    <circle cx="330" cy="45" r="3" fill="none" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+                    <circle cx="350" cy="45" r="3" fill="none" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+                    <circle cx="330" cy="55" r="3" fill="none" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+                    <circle cx="350" cy="55" r="3" fill="none" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+  
+                    <rect x="270" y="130" width="15" height="8" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <text x="277" y="136" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">TUB</text>
+                    <rect x="290" y="130" width="8" height="15" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <text x="294" y="140" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">WC</text>
+                    <circle cx="275" cy="200" r="6" fill="none" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <text x="275" y="205" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">SINK</text>
+  
+                    <rect x="40" y="140" width="25" height="35" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" class="fade-in-delayed" />
+                    <text x="52" y="160" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">BED</text>
+                    <rect x="170" y="175" width="35" height="25" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" class="fade-in-delayed" />
+                    <text x="187" y="190" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">BED</text>
+  
+                    <rect x="110" y="140" width="25" height="8" fill="none" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <line x1="115" y1="144" x2="130" y2="144" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+                    <text x="122" y="146" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">CL</text>
+  
+                    <rect x="210" y="175" width="8" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <line x1="214" y1="180" x2="214" y2="190" stroke="#A0AEC0" stroke-width="0.5" class="fade-in-delayed" />
+                    <text x="214" y="187" text-anchor="middle" class="fill-slate-400 text-xs fade-in-delayed">CL</text>
+  
+                    <line x1="320" y1="220" x2="380" y2="220" stroke="#4A5568" stroke-width="4" class="fade-in" />
+                    <line x1="325" y1="218" x2="375" y2="218" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <line x1="330" y1="216" x2="370" y2="216" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+                    <line x1="335" y1="214" x2="365" y2="214" stroke="#A0AEC0" stroke-width="1" class="fade-in-delayed" />
+  
+                    <!-- North Arrow -->
+                    <g transform="translate(360, 40)" class="fade-in-delayed">
+                      <circle cx="0" cy="0" r="12" fill="white" stroke="#4A5568" stroke-width="1" />
+                      <polygon points="0,-8 3,2 0,0 -3,2" fill="#4A5568"></polygon>
+                      <text x="0" y="6" text-anchor="middle" class="fill-slate-600 text-xs font-bold">N</text>
+                    </g>
+  
+                    <!-- Scale -->
+                    <g transform="translate(30, 250)" class="fade-in-delayed">
+                      <line x1="0" y1="0" x2="40" y2="0" stroke="#4A5568" stroke-width="2" />
+                      <line x1="0" y1="-2" x2="0" y2="2" stroke="#4A5568" stroke-width="1" />
+                      <line x1="20" y1="-2" x2="20" y2="2" stroke="#4A5568" stroke-width="1" />
+                      <line x1="40" y1="-2" x2="40" y2="2" stroke="#4A5568" stroke-width="1" />
+                      <text x="0" y="8" text-anchor="middle" class="fill-slate-500 text-xs">0</text>
+                      <text x="20" y="8" text-anchor="middle" class="fill-slate-500 text-xs">10'</text>
+                      <text x="40" y="8" text-anchor="middle" class="fill-slate-500 text-xs">20'</text>
+                      <text x="20" y="-6" text-anchor="middle" class="fill-slate-500 text-xs font-medium">SCALE</text>
+                    </g>
+  
+                    <!-- Dimensions -->
+                    <line x1="20" y1="235" x2="380" y2="235" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <line x1="20" y1="232" x2="20" y2="238" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <line x1="380" y1="232" x2="380" y2="238" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <text x="200" y="245" text-anchor="middle" class="fill-slate-500 text-xs fade-in-delayed">36'-0"</text>
+  
+                    <line x1="395" y1="20" x2="395" y2="220" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <line x1="392" y1="20" x2="398" y2="20" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <line x1="392" y1="220" x2="398" y2="220" stroke="#718096" stroke-width="0.5" class="fade-in-delayed" />
+                    <text x="405" y="125" text-anchor="middle" class="fill-slate-500 text-xs fade-in-delayed" transform="rotate(90 405 125)">20'-0"</text>
+                  </svg>
+                </div>
+  
+                <!-- Legend -->
+                <div class="border-t pt-4 transition-all duration-500" [ngClass]="floorplanVisible ? 'opacity-100' : 'opacity-0'">
+                  <div class="flex items-center justify-between text-xs text-slate-500">
+                    <span>Total: 720 sq ft</span>
+                    <span>Generated in 0.8s</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Floating Elements -->
+            <div
+              class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full opacity-20 animate-bounce"
+            ></div>
+            <div
+              class="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full opacity-20 animate-bounce"
+            ></div>
+          </div>
+  
+          <!-- Floating Cards -->
+          <div
+            class="absolute -top-8 -left-8 bg-slate-800 border border-slate-700 rounded-lg p-4 shadow-xl transition-all duration-700"
+            [ngClass]="floorplanVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+          >
+            <div class="flex items-center space-x-2 text-sm">
+              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span class="text-slate-300">AI Processing</span>
+            </div>
+          </div>
+  
+          <div
+            class="absolute -bottom-8 -right-8 bg-slate-800 border border-slate-700 rounded-lg p-4 shadow-xl transition-all duration-700"
+            [ngClass]="floorplanVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            style="transition-delay: 0.5s"
+          >
+            <div class="text-sm text-slate-300">
+              <div class="font-medium">Precision: 99.2%</div>
+              <div class="text-slate-400">CAD Ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

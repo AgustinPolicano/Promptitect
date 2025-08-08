@@ -1,1 +1,143 @@
-/* You can add global styles to this file, and also import other style files */
+/* --- imports (ya los tenés) --- */
+@import url("tailwindcss");
+@import url("@spartan-ng/brain/hlm-tailwind-preset.css");
+@import url("@angular/cdk/overlay-prebuilt.css");
+
+/* =========================================
+   TOKENS (HSL sin hsl()) — basados en tu Hero
+   slate oscuro + acentos azul → teal
+   ========================================= */
+:root {
+  /* Base */
+  --background: 222 47% 11%;          /* aprox slate-900 */
+  --foreground: 210 40% 98%;
+
+  /* Superficies */
+  --card: 222 47% 14%;                /* aprox slate-800 */
+  --card-foreground: 210 40% 96%;
+
+  /* Muted / bordes / inputs */
+  --muted: 215 20% 20%;               /* ~ slate-700 */
+  --muted-foreground: 215 20% 70%;
+  --border: 215 20% 25%;
+  --input: 215 20% 25%;
+
+  /* Ring (focus) */
+  --ring: 201 96% 45%;                /* ~ blue-600 */
+
+  /* Primario */
+  --primary: 201 96% 45%;             /* ~ blue-600 */
+  --primary-foreground: 210 40% 98%;
+
+  /* Degradados de acento usados en el Hero */
+  --accent-from: 201 96% 45%;         /* blue-600 */
+  --accent-to: 173 80% 40%;           /* teal-500/600 */
+
+  /* Radios grandes como en el Hero */
+  --radius: 0.75rem;
+}
+
+/* Modo oscuro (ya estás en dark, pero lo dejamos preparado) */
+.dark {
+  --background: 224 71% 4%;
+  --foreground: 210 40% 98%;
+  --card: 224 65% 7%;
+  --card-foreground: 210 40% 98%;
+
+  --muted: 223 47% 11%;
+  --muted-foreground: 215 20% 65%;
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
+
+  --ring: 201 96% 45%;
+  --primary: 201 96% 45%;
+  --primary-foreground: 210 40% 98%;
+}
+
+/* =========================================
+   MAPEO A UTILIDADES TAILWIND v4 (@theme)
+   — esto habilita bg-background, text-card-foreground, etc.
+   ========================================= */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
+  --radius-2xl: calc(var(--radius) + 6px);
+
+  /* Sombras suaves que combinan con tu estética */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 6px 14px -4px rgb(0 0 0 / 0.22);
+  --shadow-lg: 0 16px 40px -10px rgb(0 0 0 / 0.35);
+}
+
+/* =========================================
+   Accesibilidad: focus ring consistente
+   ========================================= */
+:where(button, a, input, textarea, select, [tabindex]) {
+  &:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* =========================================
+   Utils que usás en el Hero (reutilizables)
+   — para sacar inline styles
+   ========================================= */
+
+/* Degradado de fondo principal del Hero */
+.hero-gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(222 47% 11%),
+    hsl(222 32% 17%),
+    hsl(222 47% 11%)
+  );
+}
+
+/* Degradado de acento azul→teal (para botones/CTAs) */
+.accent-gradient {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--accent-from)),
+    hsl(var(--accent-to))
+  );
+}
+
+/* Patrón de “blueprint grid” (lo que tenías en [ngStyle]) */
+.blueprint-grid-40 {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.10) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Variante 20px para el panel blanco derecho */
+.blueprint-grid-20 {
+  background-image:
+    linear-gradient(#3B82F6 1px, transparent 1px),
+    linear-gradient(90deg, #3B82F6 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* “Glass card” como tu bloque de demo (oscuro translúcido) */
+.glass-card {
+  background-color: hsl(var(--card) / 0.5);
+  backdrop-filter: blur(6px);
+  border: 1px solid hsl(var(--border) / 0.6);
+}
+
+/* Redondeos grandes por defecto (como en tu Hero) */
+.rounded-xl { border-radius: var(--radius-xl) }
+.rounded-2xl { border-radius: var(--radius-2xl) }
