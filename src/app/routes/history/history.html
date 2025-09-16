@@ -1,0 +1,292 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="absolute top-20 right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-20 left-20 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 1000ms;"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10">
+    <!-- Header Section -->
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+          Generation
+          <br />
+          <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            History
+          </span>
+        </h1>
+        <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+          Browse through your previous AI-generated floorplans and find inspiration for your next project.
+        </p>
+      </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="max-w-7xl mx-auto px-6 mb-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <!-- Search Bar -->
+          <div class="flex-1 w-full">
+            <div class="relative">
+              <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+              <input
+                type="text"
+                [(ngModel)]="searchTerm"
+                (input)="filterGenerations()"
+                placeholder="Search your generations by description, type, or style..."
+                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg pl-12 pr-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+              />
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="flex gap-4 w-full lg:w-auto">
+            <select
+              [(ngModel)]="selectedType"
+              (change)="filterGenerations()"
+              class="bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            >
+              <option value="">All Types</option>
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+              <option value="office">Office</option>
+              <option value="retail">Retail</option>
+              <option value="restaurant">Restaurant</option>
+            </select>
+
+            <select
+              [(ngModel)]="selectedSize"
+              (change)="filterGenerations()"
+              class="bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            >
+              <option value="">All Sizes</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+              <option value="extra-large">Extra Large</option>
+            </select>
+
+            <button
+              (click)="clearFilters()"
+              class="px-4 py-3 border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white rounded-lg transition-colors"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="max-w-7xl mx-auto px-6 pb-12">
+      <!-- Results Header -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center space-x-4">
+          <h2 class="text-2xl font-bold text-white">
+            {{ filteredGenerations().length }} Generation{{ filteredGenerations().length !== 1 ? 's' : '' }}
+          </h2>
+          <div class="text-slate-400 text-sm">
+            {{ filteredGenerations().length }} of {{ totalGenerations() }} total
+          </div>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-lg p-1">
+          <button
+            (click)="setViewMode('grid')"
+            [class]="viewMode() === 'grid' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'"
+            class="p-2 rounded transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </button>
+          <button
+            (click)="setViewMode('list')"
+            [class]="viewMode() === 'list' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'"
+            class="p-2 rounded transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="filteredGenerations().length === 0" class="text-center py-16">
+        <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-12">
+          <svg class="w-16 h-16 mx-auto mb-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <h3 class="text-2xl font-bold text-white mb-4">No generations found</h3>
+          <p class="text-slate-400 mb-6">
+            {{ searchTerm() || selectedType() || selectedSize() ? 'Try adjusting your search or filters' : 'Start creating your first floorplan to see it here' }}
+          </p>
+          <button
+            *ngIf="!searchTerm() && !selectedType() && !selectedSize()"
+            routerLink="/generation"
+            class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200"
+          >
+            Create Your First Floorplan
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid View -->
+      <div *ngIf="viewMode() === 'grid' && filteredGenerations().length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let generation of filteredGenerations()" class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-slate-600 transition-colors group">
+          <!-- Floorplan Preview -->
+          <div class="aspect-video bg-white p-4 flex items-center justify-center">
+            <svg viewBox="0 0 320 240" class="w-full h-full">
+              <rect x="20" y="20" width="280" height="200" fill="none" stroke="#2D3748" stroke-width="3"/>
+              <line x1="20" y1="80" x2="120" y2="80" stroke="#2D3748" stroke-width="2"/>
+              <line x1="140" y1="80" x2="200" y2="80" stroke="#2D3748" stroke-width="2"/>
+              <line x1="220" y1="80" x2="300" y2="80" stroke="#2D3748" stroke-width="2"/>
+              <text x="160" y="120" text-anchor="middle" class="fill-slate-600 text-xs font-medium">{{ generation.style }} Layout</text>
+              <text x="160" y="140" text-anchor="middle" class="fill-slate-400 text-xs">{{ generation.propertyType }}</text>
+            </svg>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <div class="mb-4">
+              <h3 class="text-white font-semibold text-lg mb-2 line-clamp-2">{{ generation.prompt }}</h3>
+              <div class="flex items-center justify-between text-sm text-slate-400">
+                <span>{{ generation.size }} • {{ generation.propertyType }}</span>
+                <span>{{ generation.createdAt | date:'shortDate' }}</span>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs rounded-full">{{ generation.style }}</span>
+              <span class="px-2 py-1 bg-teal-600/20 text-teal-400 text-xs rounded-full">{{ generation.outputFormat }}</span>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <button
+                  (click)="viewGeneration(generation)"
+                  class="flex items-center space-x-1 text-blue-400 hover:text-blue-300 text-sm transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <span>View</span>
+                </button>
+                
+                <button
+                  (click)="downloadGeneration(generation)"
+                  class="flex items-center space-x-1 text-teal-400 hover:text-teal-300 text-sm transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="text-xs text-slate-500">
+                {{ generation.generationTime }}s
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- List View -->
+      <div *ngIf="viewMode() === 'list' && filteredGenerations().length > 0" class="space-y-4">
+        <div *ngFor="let generation of filteredGenerations()" class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-slate-600 transition-colors">
+          <div class="flex items-center space-x-6">
+            <!-- Thumbnail -->
+            <div class="w-24 h-18 bg-white rounded-lg p-2 flex-shrink-0">
+              <svg viewBox="0 0 320 240" class="w-full h-full">
+                <rect x="20" y="20" width="280" height="200" fill="none" stroke="#2D3748" stroke-width="3"/>
+                <line x1="20" y1="80" x2="120" y2="80" stroke="#2D3748" stroke-width="2"/>
+                <line x1="140" y1="80" x2="200" y2="80" stroke="#2D3748" stroke-width="2"/>
+                <line x1="220" y1="80" x2="300" y2="80" stroke="#2D3748" stroke-width="2"/>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <h3 class="text-white font-semibold text-lg mb-2 truncate">{{ generation.prompt }}</h3>
+              <div class="flex items-center space-x-4 text-sm text-slate-400 mb-2">
+                <span>{{ generation.size }} • {{ generation.propertyType }}</span>
+                <span>{{ generation.style }}</span>
+                <span>{{ generation.outputFormat }}</span>
+                <span>{{ generation.createdAt | date:'shortDate' }}</span>
+              </div>
+              <div class="text-xs text-slate-500">
+                Generated in {{ generation.generationTime }}s
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-3 flex-shrink-0">
+              <button
+                (click)="viewGeneration(generation)"
+                class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>View</span>
+              </button>
+              
+              <button
+                (click)="downloadGeneration(generation)"
+                class="flex items-center space-x-2 border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7,10 12,15 17,10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>Download</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load More -->
+      <div *ngIf="hasMoreGenerations()" class="text-center mt-12">
+        <button
+          (click)="loadMoreGenerations()"
+          [disabled]="isLoadingMore()"
+          class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 disabled:opacity-50"
+        >
+          <span *ngIf="!isLoadingMore()">Load More Generations</span>
+          <span *ngIf="isLoadingMore()" class="flex items-center space-x-2">
+            <svg class="animate-spin w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            </svg>
+            <span>Loading...</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

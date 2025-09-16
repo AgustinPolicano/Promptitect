@@ -1,3 +1,15 @@
 
-<router-outlet />
-<app-footer />
+<!-- Layout with Sidebar (for authenticated pages) -->
+<div *ngIf="showSidebar()">
+  <app-sidebar />
+  <div class="lg:ml-80 transition-all duration-300">
+    <router-outlet />
+    <app-footer *ngIf="showFooter()" />
+  </div>
+</div>
+
+<!-- Layout without Sidebar (for public pages) -->
+<div *ngIf="!showSidebar()">
+  <router-outlet />
+  <app-footer *ngIf="showFooter()" />
+</div>

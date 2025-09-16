@@ -1,224 +1,450 @@
-<section id="features" class="relative z-10 max-w-7xl mx-auto px-6 py-24 ">
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/20 rounded-full px-4 py-2 mb-6">
-        <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-          <path d="M18 13l-5-5"></path>
-          <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
+<section id="features" class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+  <!-- Section Header -->
+  <div class="text-center mb-16">
+    <div class="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/20 rounded-full px-4 py-2 mb-6">
+      <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M17.8 19.2 16 11l3.5-3.5c.8-.8.8-2 0-2.8-.8-.8-2.1-.8-2.8 0L13 8.2l-8.2-1.8c-.5-.1-1.1.1-1.4.6s-.2 1.1.1 1.4l8.1 8.1c.3.3.8.4 1.4.1s.7-.9.6-1.4Z"/>
+      </svg>
+      <span class="text-teal-300 text-sm font-medium">AI in Action</span>
+    </div>
+    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+      See What Our AI
+      <br />
+      <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+        Can Generate
+      </span>
+    </h2>
+    <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+      Real examples of prompts and their AI-generated floorplans. Watch how simple descriptions 
+      become professional architectural drawings in seconds.
+    </p>
+  </div>
+
+  <!-- Examples Grid -->
+  <div class="grid lg:grid-cols-2 gap-12">
+    <!-- Example 1 - Modern Office -->
+    <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl">
+      <!-- Prompt -->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+          <span class="text-blue-400 text-sm font-medium">USER PROMPT</span>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-600 rounded-lg p-4">
+          <p class="text-slate-200 font-mono text-sm">
+            "Modern office space with open workspace, 2 meeting rooms, kitchen area, and reception"
+          </p>
+        </div>
+      </div>
+      
+      <!-- Generated Floorplan -->
+      <div class="bg-white rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="text-slate-800 font-semibold">Generated in 2.3s</h4>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>AI Generated</span>
+          </div>
+        </div>
+        
+        <svg viewBox="0 0 320 240" class="w-full h-48">
+          <!-- Office Floorplan -->
+          <!-- Exterior walls -->
+          <rect x="20" y="20" width="280" height="200" fill="none" stroke="#2D3748" stroke-width="3"/>
+          
+          <!-- Interior walls -->
+          <line x1="20" y1="80" x2="120" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="140" y1="80" x2="200" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="220" y1="80" x2="300" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="120" y1="20" x2="120" y2="60" stroke="#2D3748" stroke-width="2"/>
+          <line x1="120" y1="100" x2="120" y2="140" stroke="#2D3748" stroke-width="2"/>
+          <line x1="200" y1="20" x2="200" y2="60" stroke="#2D3748" stroke-width="2"/>
+          <line x1="200" y1="100" x2="200" y2="140" stroke="#2D3748" stroke-width="2"/>
+          <line x1="120" y1="140" x2="200" y2="140" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Doors -->
+          <path d="M 120 80 A 20 20 0 0 1 140 80" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 200 80 A 20 20 0 0 1 220 80" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 60 20 A 15 15 0 0 1 60 35" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Windows -->
+          <line x1="140" y1="20" x2="180" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="240" y1="20" x2="280" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="300" y1="100" x2="300" y2="140" stroke="#4A5568" stroke-width="2"/>
+          
+          <!-- Furniture - Reception desk -->
+          <rect x="40" y="40" width="60" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2" rx="2"/>
+          
+          <!-- Meeting room tables -->
+          <rect x="140" y="40" width="40" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="220" y="40" width="40" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Open workspace desks -->
+          <rect x="40" y="160" width="20" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="80" y="160" width="20" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="120" y="160" width="20" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="160" y="160" width="20" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Kitchen counter -->
+          <rect x="220" y="160" width="60" height="15" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Labels -->
+          <text x="70" y="35" text-anchor="middle" class="fill-slate-600 text-xs font-medium">RECEPTION</text>
+          <text x="160" y="35" text-anchor="middle" class="fill-slate-600 text-xs font-medium">MEETING 1</text>
+          <text x="240" y="35" text-anchor="middle" class="fill-slate-600 text-xs font-medium">MEETING 2</text>
+          <text x="160" y="120" text-anchor="middle" class="fill-slate-600 text-xs font-medium">OPEN WORKSPACE</text>
+          <text x="160" y="130" text-anchor="middle" class="fill-slate-400 text-xs">2,400 sq ft</text>
+          <text x="250" y="185" text-anchor="middle" class="fill-slate-600 text-xs font-medium">KITCHEN</text>
         </svg>
-        <span class="text-teal-300 text-sm font-medium">Powerful Features</span>
-      </div>
-      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-        Everything You Need for
-        <br />
-        <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-          Professional Floorplans
-        </span>
-      </h2>
-      <p class="text-xl text-slate-300 max-w-3xl mx-auto">
-        From concept to CAD-ready drawings in seconds. Our AI understands architectural principles 
-        and generates layouts that meet professional standards.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">Lightning Fast</h3>
-        <p class="text-slate-300 mb-6">
-          Generate complete floorplans in under 10 seconds. What used to take hours now happens instantly.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Sub-10 second generation</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Real-time preview updates</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">Architectural Precision</h3>
-        <p class="text-slate-300 mb-6">
-          AI trained on thousands of professional blueprints ensures accurate proportions and building codes compliance.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Code-compliant layouts</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Accurate measurements</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">CAD-Ready Export</h3>
-        <p class="text-slate-300 mb-6">
-          Export to DWG, PDF, or SVG formats. Seamlessly integrate with your existing workflow and tools.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>AutoCAD compatible</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Vector & raster formats</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">Smart Interpretation</h3>
-        <p class="text-slate-300 mb-6">
-          Understands architectural terminology, spatial relationships, and design preferences from natural language.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Natural language processing</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Context-aware generation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">Team Collaboration</h3>
-        <p class="text-slate-300 mb-6">
-          Share, comment, and iterate on designs with your team. Real-time collaboration for faster project delivery.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Real-time sharing</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>Version control</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl">
-        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-5-5"></path>
-            <path d="M2 7l7-3 11 11-3 7-11-11-4 4 0 0"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-4">Enterprise Security</h3>
-        <p class="text-slate-300 mb-6">
-          Your designs are protected with enterprise-grade security. SOC 2 compliant with end-to-end encryption.
-        </p>
-        <div class="space-y-2">
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>SOC 2 Type II certified</span>
-          </div>
-          <div class="flex items-center text-sm text-slate-400">
-            <svg class="w-4 h-4 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <path d="M22 4 12 14.01l-3-3"></path>
-            </svg>
-            <span>End-to-end encryption</span>
-          </div>
+        
+        <div class="flex items-center justify-between text-xs text-slate-500 mt-4">
+          <span>2,400 sq ft • 6 rooms</span>
+          <span>Export ready</span>
         </div>
       </div>
     </div>
 
-    <div class="text-center mt-16">
-      <div class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600 rounded-2xl p-8 max-w-4xl mx-auto">
-        <h3 class="text-2xl font-bold text-white mb-4">
-          Ready to Transform Your Design Process?
-        </h3>
-        <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
-          Join thousands of architects and designers who've already revolutionized their workflow with AI-powered floorplan generation.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            Start Free Trial
-          </button>
-          <button class="border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200">
-            Schedule Demo
-          </button>
+    <!-- Example 2 - Luxury Home -->
+    <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl">
+      <!-- Prompt -->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
+          <span class="text-teal-400 text-sm font-medium">USER PROMPT</span>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-600 rounded-lg p-4">
+          <p class="text-slate-200 font-mono text-sm">
+            "Luxury 3-bedroom house with master suite, walk-in closet, open kitchen, and 2-car garage"
+          </p>
+        </div>
+      </div>
+      
+      <!-- Generated Floorplan -->
+      <div class="bg-white rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="text-slate-800 font-semibold">Generated in 1.8s</h4>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>AI Generated</span>
+          </div>
+        </div>
+        
+        <svg viewBox="0 0 360 280" class="w-full h-48">
+          <!-- Luxury Home Floorplan -->
+          <!-- Exterior walls -->
+          <rect x="20" y="20" width="320" height="240" fill="none" stroke="#2D3748" stroke-width="3"/>
+          
+          <!-- Interior walls -->
+          <!-- Main hallway -->
+          <line x1="20" y1="120" x2="140" y2="120" stroke="#2D3748" stroke-width="2"/>
+          <line x1="160" y1="120" x2="220" y2="120" stroke="#2D3748" stroke-width="2"/>
+          <line x1="240" y1="120" x2="340" y2="120" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Vertical divisions -->
+          <line x1="140" y1="20" x2="140" y2="100" stroke="#2D3748" stroke-width="2"/>
+          <line x1="140" y1="140" x2="140" y2="180" stroke="#2D3748" stroke-width="2"/>
+          <line x1="220" y1="20" x2="220" y2="100" stroke="#2D3748" stroke-width="2"/>
+          <line x1="220" y1="140" x2="220" y2="200" stroke="#2D3748" stroke-width="2"/>
+          <line x1="280" y1="120" x2="280" y2="200" stroke="#2D3748" stroke-width="2"/>
+          <line x1="280" y1="220" x2="280" y2="260" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Master suite division -->
+          <line x1="140" y1="180" x2="220" y2="180" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Doors -->
+          <path d="M 140 120 A 20 20 0 0 1 160 120" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 220 120 A 20 20 0 0 1 240 120" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 140 140 A 20 20 0 0 1 160 140" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 220 140 A 20 20 0 0 1 240 140" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 140 180 A 15 15 0 0 1 155 180" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Front door -->
+          <path d="M 80 20 A 20 20 0 0 1 80 40" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Garage door -->
+          <line x1="280" y1="260" x2="340" y2="260" stroke="#4A5568" stroke-width="3"/>
+          
+          <!-- Windows -->
+          <line x1="160" y1="20" x2="200" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="240" y1="20" x2="280" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="340" y1="60" x2="340" y2="100" stroke="#4A5568" stroke-width="2"/>
+          <line x1="20" y1="160" x2="20" y2="200" stroke="#4A5568" stroke-width="2"/>
+          <line x1="140" y1="260" x2="180" y2="260" stroke="#4A5568" stroke-width="2"/>
+          <line x1="200" y1="260" x2="240" y2="260" stroke="#4A5568" stroke-width="2"/>
+          
+          <!-- Kitchen island -->
+          <rect x="160" y="40" width="40" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Master bed -->
+          <rect x="40" y="40" width="30" height="50" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Other beds -->
+          <rect x="250" y="40" width="25" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="250" y="150" width="25" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Walk-in closet -->
+          <rect x="40" y="140" width="80" height="20" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <line x1="50" y1="150" x2="110" y2="150" stroke="#A0AEC0" stroke-width="0.5"/>
+          
+          <!-- Bathroom fixtures -->
+          <rect x="40" y="200" width="15" height="8" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="70" cy="230" r="6" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <rect x="90" y="225" width="8" height="10" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Labels -->
+          <text x="80" y="65" text-anchor="middle" class="fill-slate-600 text-xs font-medium">MASTER BEDROOM</text>
+          <text x="80" y="75" text-anchor="middle" class="fill-slate-400 text-xs">16' × 12'</text>
+          <text x="180" y="55" text-anchor="middle" class="fill-slate-600 text-xs font-medium">KITCHEN</text>
+          <text x="180" y="65" text-anchor="middle" class="fill-slate-400 text-xs">14' × 10'</text>
+          <text x="260" y="65" text-anchor="middle" class="fill-slate-600 text-xs font-medium">BEDROOM 2</text>
+          <text x="260" y="75" text-anchor="middle" class="fill-slate-400 text-xs">12' × 10'</text>
+          <text x="260" y="175" text-anchor="middle" class="fill-slate-600 text-xs font-medium">BEDROOM 3</text>
+          <text x="260" y="185" text-anchor="middle" class="fill-slate-400 text-xs">12' × 10'</text>
+          <text x="80" y="155" text-anchor="middle" class="fill-slate-600 text-xs font-medium">WALK-IN CLOSET</text>
+          <text x="80" y="225" text-anchor="middle" class="fill-slate-600 text-xs font-medium">MASTER BATH</text>
+          <text x="310" y="190" text-anchor="middle" class="fill-slate-600 text-xs font-medium">GARAGE</text>
+          <text x="310" y="200" text-anchor="middle" class="fill-slate-400 text-xs">20' × 20'</text>
+        </svg>
+        
+        <div class="flex items-center justify-between text-xs text-slate-500 mt-4">
+          <span>2,800 sq ft • 3 bedrooms</span>
+          <span>CAD ready</span>
         </div>
       </div>
     </div>
-  </section>            
+
+    <!-- Example 3 - Studio Apartment -->
+    <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl">
+      <!-- Prompt -->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+          <span class="text-purple-400 text-sm font-medium">USER PROMPT</span>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-600 rounded-lg p-4">
+          <p class="text-slate-200 font-mono text-sm">
+            "Compact studio apartment with kitchen island, murphy bed, and separate bathroom"
+          </p>
+        </div>
+      </div>
+      
+      <!-- Generated Floorplan -->
+      <div class="bg-white rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="text-slate-800 font-semibold">Generated in 1.2s</h4>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>AI Generated</span>
+          </div>
+        </div>
+        
+        <svg viewBox="0 0 280 200" class="w-full h-48">
+          <!-- Studio Apartment Floorplan -->
+          <!-- Exterior walls -->
+          <rect x="20" y="20" width="240" height="160" fill="none" stroke="#2D3748" stroke-width="3"/>
+          
+          <!-- Bathroom wall -->
+          <line x1="20" y1="120" x2="80" y2="120" stroke="#2D3748" stroke-width="2"/>
+          <line x1="80" y1="120" x2="80" y2="180" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Kitchen area definition -->
+          <line x1="140" y1="20" x2="140" y2="80" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="4,4"/>
+          
+          <!-- Door -->
+          <path d="M 60 20 A 15 15 0 0 1 60 35" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 80 120 A 15 15 0 0 1 95 120" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Windows -->
+          <line x1="100" y1="20" x2="140" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="180" y1="20" x2="220" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="260" y1="60" x2="260" y2="100" stroke="#4A5568" stroke-width="2"/>
+          
+          <!-- Kitchen island -->
+          <rect x="160" y="40" width="40" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Murphy bed (shown closed) -->
+          <rect x="220" y="140" width="8" height="30" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Living area furniture -->
+          <rect x="140" y="100" width="60" height="25" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <rect x="160" y="140" width="20" height="20" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Bathroom fixtures -->
+          <rect x="30" y="130" width="12" height="6" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="35" cy="160" r="5" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <rect x="55" y="155" width="6" height="8" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Labels -->
+          <text x="80" y="65" text-anchor="middle" class="fill-slate-600 text-xs font-medium">LIVING AREA</text>
+          <text x="80" y="75" text-anchor="middle" class="fill-slate-400 text-xs">20' × 12'</text>
+          <text x="180" y="55" text-anchor="middle" class="fill-slate-600 text-xs font-medium">KITCHEN</text>
+          <text x="180" y="65" text-anchor="middle" class="fill-slate-400 text-xs">12' × 8'</text>
+          <text x="50" y="145" text-anchor="middle" class="fill-slate-600 text-xs font-medium">BATH</text>
+          <text x="225" y="160" text-anchor="middle" class="fill-slate-600 text-xs font-medium">MURPHY BED</text>
+        </svg>
+        
+        <div class="flex items-center justify-between text-xs text-slate-500 mt-4">
+          <span>650 sq ft • Studio</span>
+          <span>Space optimized</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 4 - Restaurant Layout -->
+    <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-slate-600 rounded-xl p-8 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl">
+      <!-- Prompt -->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+          <span class="text-emerald-400 text-sm font-medium">USER PROMPT</span>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-600 rounded-lg p-4">
+          <p class="text-slate-200 font-mono text-sm">
+            "Restaurant with bar seating, dining area for 40 people, kitchen, and restrooms"
+          </p>
+        </div>
+      </div>
+      
+      <!-- Generated Floorplan -->
+      <div class="bg-white rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="text-slate-800 font-semibold">Generated in 3.1s</h4>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>AI Generated</span>
+          </div>
+        </div>
+        
+        <svg viewBox="0 0 320 240" class="w-full h-48">
+          <!-- Restaurant Floorplan -->
+          <!-- Exterior walls -->
+          <rect x="20" y="20" width="280" height="200" fill="none" stroke="#2D3748" stroke-width="3"/>
+          
+          <!-- Kitchen wall -->
+          <line x1="20" y1="80" x2="120" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="120" y1="20" x2="120" y2="60" stroke="#2D3748" stroke-width="2"/>
+          <line x1="120" y1="100" x2="120" y2="140" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Restroom walls -->
+          <line x1="240" y1="20" x2="240" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="240" y1="40" x2="300" y2="40" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Bar area -->
+          <line x1="140" y1="80" x2="220" y2="80" stroke="#2D3748" stroke-width="2"/>
+          <line x1="140" y1="100" x2="220" y2="100" stroke="#2D3748" stroke-width="2"/>
+          
+          <!-- Doors -->
+          <path d="M 60 20 A 15 15 0 0 1 60 35" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 120 80 A 20 20 0 0 1 140 80" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 240 30 A 10 10 0 0 1 250 30" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M 240 50 A 10 10 0 0 1 250 50" fill="none" stroke="#4A5568" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Windows -->
+          <line x1="160" y1="20" x2="200" y2="20" stroke="#4A5568" stroke-width="2"/>
+          <line x1="300" y1="100" x2="300" y2="140" stroke="#4A5568" stroke-width="2"/>
+          <line x1="20" y1="160" x2="20" y2="200" stroke="#4A5568" stroke-width="2"/>
+          
+          <!-- Kitchen equipment -->
+          <rect x="30" y="30" width="80" height="40" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Bar counter -->
+          <rect x="140" y="80" width="80" height="20" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Dining tables (circles for round tables) -->
+          <circle cx="60" cy="140" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="100" cy="140" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="60" cy="180" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="100" cy="180" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="180" cy="140" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="220" cy="140" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="180" cy="180" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          <circle cx="220" cy="180" r="12" fill="none" stroke="#A0AEC0" stroke-width="1" stroke-dasharray="2,2"/>
+          
+          <!-- Bar stools -->
+          <circle cx="150" cy="70" r="3" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="165" cy="70" r="3" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="180" cy="70" r="3" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="195" cy="70" r="3" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="210" cy="70" r="3" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Restroom fixtures -->
+          <rect x="250" y="25" width="8" height="6" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          <rect x="270" y="25" width="8" height="6" fill="#E2E8F0" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="255" cy="55" r="4" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          <circle cx="275" cy="55" r="4" fill="none" stroke="#A0AEC0" stroke-width="1"/>
+          
+          <!-- Labels -->
+          <text x="70" y="45" text-anchor="middle" class="fill-slate-600 text-xs font-medium">KITCHEN</text>
+          <text x="70" y="55" text-anchor="middle" class="fill-slate-400 text-xs">12' × 8'</text>
+          <text x="180" y="95" text-anchor="middle" class="fill-slate-600 text-xs font-medium">BAR</text>
+          <text x="150" y="160" text-anchor="middle" class="fill-slate-600 text-xs font-medium">DINING AREA</text>
+          <text x="150" y="170" text-anchor="middle" class="fill-slate-400 text-xs">40 seats</text>
+          <text x="265" y="45" text-anchor="middle" class="fill-slate-600 text-xs font-medium">RESTROOMS</text>
+        </svg>
+        
+        <div class="flex items-center justify-between text-xs text-slate-500 mt-4">
+          <span>1,200 sq ft • 40 seats</span>
+          <span>Commercial ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Capabilities -->
+  <div class="mt-20">
+    <div class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600 rounded-2xl p-8">
+      <h3 class="text-2xl font-bold text-white mb-6 text-center">
+        Why Architects Choose FloorplanAI
+      </h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Lightning Fast</h4>
+          <p class="text-slate-300 text-sm">Generate complete floorplans in under 3 seconds</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="7.5,4.21 12,6.81 16.5,4.21"/>
+              <polyline points="7.5,19.79 7.5,14.6 3,12"/>
+              <polyline points="21,12 16.5,14.6 16.5,19.79"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Architecturally Accurate</h4>
+          <p class="text-slate-300 text-sm">Proper proportions, code compliance, and realistic layouts</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7,10 12,15 17,10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Export Ready</h4>
+          <p class="text-slate-300 text-sm">DWG, PDF, SVG formats for seamless CAD integration</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="text-center mt-16">
+    <button class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center space-x-2 mx-auto">
+      <span>Try These Examples Yourself</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12,5 19,12 12,19"/>
+      </svg>
+    </button>
+    <p class="text-slate-400 text-sm mt-4">
+      Start with 5 free generations • No credit card required
+    </p>
+  </div>
+</section>
