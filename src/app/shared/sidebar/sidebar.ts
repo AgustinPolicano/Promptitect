@@ -24,6 +24,7 @@ interface UserStats {
 })
 export class Sidebar {
   isSidebarOpen = signal(false);
+  isCollapsed = signal(false);
   isLoggedIn = signal(true); // Mock: Should be connected to actual auth service
   
   // Mock user data - this would come from an auth service

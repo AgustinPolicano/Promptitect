@@ -3,6 +3,7 @@ import { HomePageComponent } from './routes/home/home-page/home-page';
 import { Login } from './routes/login/login';
 import { Generation } from './routes/generation/generation';
 import { History } from './routes/history/history';
+import { UpgradePlanComponent } from './routes/upgrade-plan/upgrade-plan';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'history',
     component: History,
+  },
+  {
+    path: 'upgrade',
+    component: UpgradePlanComponent,
   },
 
 ];
