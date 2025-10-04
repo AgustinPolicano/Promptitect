@@ -1,0 +1,203 @@
+<!-- Upgrade Plan Page -->
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  
+  <!-- Header Section with matching background -->
+  <section class="relative z-10 max-w-7xl mx-auto px-6 py-16">
+    <!-- Background Elements -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+    
+    <!-- Back Button -->
+    <a 
+      routerLink="/"
+      class="inline-flex items-center space-x-2 text-slate-400 hover:text-white transition-colors mb-8"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M19 12H5m7-7l-7 7 7 7"/>
+      </svg>
+      <span>Back to Dashboard</span>
+    </a>
+
+    <!-- Header Content -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <span class="text-blue-300 text-sm font-medium">Upgrade Plans</span>
+      </div>
+      
+      <h1 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+        Upgrade Your
+        <br />
+        <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+          Creative Power
+        </span>
+      </h1>
+      
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+        Unlock unlimited floorplan generations, premium features, and priority support. 
+        Take your architectural designs to the next level.
+      </p>
+
+      <!-- Billing Toggle -->
+      <div class="inline-flex items-center bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-1 mb-8">
+        <button 
+          (click)="togglePeriod()"
+          class="px-6 py-3 rounded-lg font-medium transition-all duration-200"
+          [class]="selectedPeriod() === 'monthly' ? 'bg-white text-slate-900' : 'text-slate-300 hover:text-white'"
+        >
+          Monthly
+        </button>
+        <button 
+          (click)="togglePeriod()"
+          class="px-6 py-3 rounded-lg font-medium transition-all duration-200 relative"
+          [class]="selectedPeriod() === 'yearly' ? 'bg-white text-slate-900' : 'text-slate-300 hover:text-white'"
+        >
+          Yearly
+          <span class="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs px-2 py-1 rounded-full">
+            Save 17%
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-3 gap-8 relative">
+      <div 
+        *ngFor="let plan of pricingPlans(); let i = index" 
+        [class]="'relative bg-slate-800/50 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl ' + 
+                 (plan.popular ? 'border-blue-500 ring-1 ring-blue-500/20 scale-105' : 'border-slate-700 hover:border-slate-600')"
+      >
+        
+        <!-- Popular Badge -->
+        <div *ngIf="plan.popular" class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <div class="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+            Most Popular
+          </div>
+        </div>
+
+        <!-- Plan Header -->
+        <div class="text-center mb-8">
+          <div [class]="'w-16 h-16 bg-gradient-to-br ' + getGradient(plan.id) + ' rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300'">
+            <!-- Icon based on plan type -->
+            <svg *ngIf="plan.name === 'Free'" class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+            </svg>
+            <svg *ngIf="plan.name === 'Pro'" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <svg *ngIf="plan.name === 'Enterprise'" class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 21h18"/>
+              <path d="M5 21V7l8-4v18"/>
+              <path d="M19 21V11l-6-4"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-white mb-2">{{ plan.name }}</h3>
+          <p class="text-slate-400 text-sm mb-4">{{ plan.description }}</p>
+          
+          <!-- Price -->
+          <div class="mb-6">
+            <div class="flex items-baseline justify-center">
+              <span class="text-4xl font-bold text-white">${{ getPrice(plan) }}</span>
+              <span *ngIf="plan.price > 0" class="text-slate-400 ml-1">/{{ getPeriodText() }}</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-1">
+              <span *ngIf="plan.price === 0">Forever free</span>
+              <span *ngIf="plan.price > 0">Per {{ getPeriodText() }}</span>
+            </p>
+            <div *ngIf="selectedPeriod() === 'yearly' && plan.price > 0" class="text-green-400 text-sm mt-1">
+              {{ getDiscount() }}
+            </div>
+          </div>
+
+          <!-- Credits Info -->
+          <div class="bg-slate-700/50 rounded-lg p-4 mb-6">
+            <div class="text-2xl font-bold text-blue-400 mb-1">{{ plan.credits.toLocaleString() }}</div>
+            <div class="text-slate-300 text-xs">{{ plan.generations }}</div>
+          </div>
+        </div>
+
+        <!-- Features List -->
+        <div class="space-y-4 mb-8">
+          <div *ngFor="let feature of plan.features" class="flex items-start space-x-3">
+            <svg class="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <path d="M22 4 12 14.01l-3-3"/>
+            </svg>
+            <span class="text-slate-300 text-sm">{{ feature }}</span>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <button 
+          (click)="selectPlan(plan)"
+          [class]="'w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 ' + 
+                   (plan.popular ? 'bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl' : 
+                   plan.id === 'free' ? 'border border-slate-600 text-slate-400 cursor-not-allowed' :
+                   'border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white hover:bg-slate-700/50')"
+          [disabled]="plan.id === 'free'"
+        >
+          <span>{{ plan.buttonText }}</span>
+          <svg *ngIf="plan.id !== 'free'" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14"/>
+            <path d="M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <!-- Additional Info -->
+        <p *ngIf="plan.name === 'Pro'" class="text-center text-slate-400 text-xs mt-4">
+          14-day free trial • Cancel anytime
+        </p>
+        <p *ngIf="plan.name === 'Enterprise'" class="text-center text-slate-400 text-xs mt-4">
+          Custom pricing based on usage
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-20 text-center">
+      <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+      
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 text-left">
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">What happens to my designs if I downgrade?</h3>
+            <p class="text-slate-400">All your previously created designs remain accessible. You'll just have reduced generation limits going forward.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Can I cancel anytime?</h3>
+            <p class="text-slate-400">Yes! You can cancel your subscription at any time. Your plan will remain active until the end of your billing period.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Do you offer refunds?</h3>
+            <p class="text-slate-400">We offer a 14-day money-back guarantee for all paid plans. No questions asked.</p>
+          </div>
+        </div>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">What payment methods do you accept?</h3>
+            <p class="text-slate-400">We accept all major credit cards, PayPal, and bank transfers for Enterprise plans.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Is there a free trial?</h3>
+            <p class="text-slate-400">Yes! Every new account starts with our Free plan. Upgrade anytime to unlock more features.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Can I change plans later?</h3>
+            <p class="text-slate-400">Absolutely! You can upgrade or downgrade your plan at any time from your account settings.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Teaser -->
+      <div class="mt-12">
+        <p class="text-slate-400 mb-4">Still have questions about our plans?</p>
+        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+          Contact our support team →
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
