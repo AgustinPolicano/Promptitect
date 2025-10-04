@@ -115,24 +115,6 @@
         </svg>
       </a>
 
-      <!-- Plans -->
-      <a 
-        routerLink="/plans"
-        routerLinkActive="bg-gradient-to-r from-blue-600/20 to-teal-600/20 border-blue-500/30 text-white"
-        class="flex items-center space-x-3 p-3 rounded-xl border border-transparent text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all duration-200 group"
-        (click)="onMobileNavigate()"
-      >
-        <div class="w-8 h-8 bg-slate-800 group-hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <div class="font-medium">My Plans</div>
-          <div class="text-xs text-slate-400">Saved floorplans</div>
-        </div>
-        <div class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">{{ userStats().saved }}</div>
-      </a>
 
       <!-- Settings -->
       <a 

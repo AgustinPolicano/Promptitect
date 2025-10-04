@@ -22,11 +22,11 @@ export class App {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // Hide footer on login and generation pages
-      const hiddenFooterPages = ['/login', '/generation' , '/history'];
+      const hiddenFooterPages = ['/login', '/generation' , '/history' , '/plans' , '/settings'];
       this.showFooter.set(!hiddenFooterPages.some(page => event.url.includes(page)));
       
       // Show sidebar on authenticated pages (generation, history, plans, settings)
-      const sidebarPages = ['/generation', '/history', '/plans', '/settings'];
+      const sidebarPages = ['/generation', '/history', '/settings' , '/login'];
       const shouldShowSidebar = sidebarPages.some(page => event.url.includes(page));
       
       // Only show sidebar if user is logged in AND on a sidebar page

@@ -1,1 +1,140 @@
-<p>plans works!</p>
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="absolute top-20 right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-20 left-20 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 1000ms;"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10">
+    <!-- Back Button -->
+    <div class="max-w-7xl mx-auto px-6 pt-8 pb-4">
+      <button (click)="navigateToGeneration()" class="group flex items-center space-x-2 text-slate-400 hover:text-white transition-colors">
+        <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+        <span class="font-medium">Back to Generation</span>
+      </button>
+    </div>
+
+    <!-- Header Section -->
+    <div class="max-w-7xl mx-auto px-6 pb-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+          Choose Your
+          <br />
+          <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            Perfect Plan
+          </span>
+        </h1>
+        <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+          Start free and scale as you grow. All plans include our core AI floorplan generation
+          with professional-quality output.
+        </p>
+
+        <!-- Pricing Toggle -->
+        <div class="flex items-center justify-center space-x-4 mt-8">
+          <span [class]="'text-sm font-medium transition-colors ' + (!isYearly() ? 'text-white' : 'text-slate-400')">Monthly</span>
+          <button (click)="togglePricing()" class="relative w-16 h-8 bg-slate-700 rounded-full transition-colors hover:bg-slate-600">
+            <div [class]="'absolute top-1 left-1 w-6 h-6 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full transition-transform duration-300 ' + (isYearly() ? 'translate-x-8' : '')"></div>
+          </button>
+          <div class="flex items-center space-x-2">
+            <span [class]="'text-sm font-medium transition-colors ' + (isYearly() ? 'text-white' : 'text-slate-400')">Yearly</span>
+            <span class="inline-flex items-center bg-teal-500/10 border border-teal-500/20 rounded-full px-2 py-1 text-xs text-teal-400 font-medium">
+              Save 17%
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 relative">
+    <div *ngFor="let plan of plans; let i = index"
+         [class]="'relative bg-slate-800/50 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl ' +
+                  (plan.popular ? 'border-blue-500 ring-1 ring-blue-500/20 scale-105' : 'border-slate-700 hover:border-slate-600')">
+
+      <!-- Popular Badge -->
+      <div *ngIf="plan.popular" class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+        <div class="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+          Most Popular
+        </div>
+      </div>
+
+      <!-- Plan Header -->
+      <div class="text-center mb-8">
+        <div [class]="'w-16 h-16 bg-gradient-to-br ' + plan.gradient + ' rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300'">
+          <!-- Icon based on plan type -->
+          <svg *ngIf="plan.name === 'Starter'" class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
+          </svg>
+          <svg *ngIf="plan.name === 'Professional'" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          <svg *ngIf="plan.name === 'Enterprise'" class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 21h18"></path>
+            <path d="M5 21V7l8-4v18"></path>
+            <path d="M19 21V11l-6-4"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-2">{{ plan.name }}</h3>
+        <p class="text-slate-400 text-sm mb-4">{{ plan.description }}</p>
+
+        <!-- Price -->
+        <div class="mb-6">
+          <div class="flex items-baseline justify-center">
+            <span class="text-4xl font-bold text-white">{{ getCurrentPrice(plan) }}</span>
+            <span *ngIf="getCurrentPrice(plan) !== 'Free' && getCurrentPrice(plan) !== 'Custom'" class="text-slate-400 ml-1">/{{ getPeriodText(plan).split(' ')[1] }}</span>
+          </div>
+          <p class="text-slate-400 text-sm mt-1">{{ getPeriodText(plan) }}</p>
+        </div>
+      </div>
+
+      <!-- Features List -->
+      <div class="space-y-4 mb-8">
+        <div *ngFor="let feature of plan.features" class="flex items-start space-x-3">
+          <svg class="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <path d="M22 4 12 14.01l-3-3"></path>
+          </svg>
+          <span class="text-slate-300 text-sm">{{ feature }}</span>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <button [class]="'w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 ' +
+                       (plan.popular ? 'bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl' :
+                                      'border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white hover:bg-slate-700/50')">
+        <span>{{ plan.cta }}</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14"></path>
+          <path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- Additional Info -->
+      <p *ngIf="plan.name === 'Professional'" class="text-center text-slate-400 text-xs mt-4">
+        14-day free trial • Cancel anytime
+      </p>
+      <p *ngIf="plan.name === 'Enterprise'" class="text-center text-slate-400 text-xs mt-4">
+        Custom pricing based on usage
+      </p>
+      </div>
+    </div>
+
+    <!-- FAQ Teaser -->
+    <div class="max-w-7xl mx-auto px-6 mt-16 pb-12">
+      <div class="text-center">
+        <p class="text-slate-400 mb-4">Have questions about our plans?</p>
+        <button class="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+          View FAQ →
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
