@@ -27,9 +27,5 @@ export const routes: Routes = [
     path: 'plans',
     component: Plans,
   },
-  {
-    path: 'upgrade',
-    component: UpgradePlanComponent,
-  },
 
 ];
